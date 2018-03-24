@@ -31,12 +31,12 @@ basicstyle=\footnotesize
 
 % Short headings should be running head and authors last names
 
-\ShortHeadings{Marvin - From exploratory models to production}{}
+\ShortHeadings{Marvin - Open source artificial intelligence platform}{}
 \firstpageno{1}
 
 \begin{document}
 
-\title{Marvin - From exploratory models to production}
+\title{Marvin - Open source artificial intelligence platform}
 
 \author{\name Lucas B.\ Miguel \email lucas.bonatto@b2wdigital.com
        \AND
@@ -55,7 +55,7 @@ basicstyle=\footnotesize
 \maketitle
 
 \begin{abstract}%   <- trailing '%' for backward compatibility of .sty file
-Marvin is an open source project that focuses on empowering data science teams to deliver complex solutions supported by a high-scale, low-latency, language agnostic and standardized architecture platform, while simplifying the process of exploration and modeling. Build model-dependent applications in a robust way is not trivial, one is required to have knowledge in advanced areas of sciences like computing, statistics and math. Marvin aims to abstract the complexities in the creation process of a scalable, highly available, interoperable and maintainable software.
+Marvin is an open source project that focuses on empowering data science teams to deliver industrial-grade applications supported by a high-scale, low-latency, language agnostic and standardized architecture platform, while simplifying the process of exploration and modeling. Building model-dependent applications in a robust way is not trivial, one is required to have knowledge in advanced areas of sciences like computing, statistics and math. Marvin aims at abstracting the complexities in the creation process of scalable, highly available, interoperable and maintainable predictive software.
 \end{abstract}
 
 \begin{keywords}
@@ -64,11 +64,11 @@ Marvin is an open source project that focuses on empowering data science teams t
 
 \section{Introduction}
 
-Being able to quickly identify hidden patterns in datasets and wisely choose the best model to train historical data and make predictions are the biggest advantage of data-driven organizations against their competitors. Knowing the customer demand for a product before buying it~\citep{chen2000quantifying} or being able to detect a fraud before charging the customer's credit card~\citep{chan1998toward} with a certain level of confidence are examples of how companies doing businesses on the internet are making better decisions and maximizing their earnings.
+Being able to quickly identify hidden patterns in datasets, wisely choose the best model to train from historical data, and making predictions are the biggest advantages of data-driven organizations against their competitors. Knowing the customer demand for a product before buying it~\citep{chen2000quantifying} or being able to detect a fraud before charging the customer's credit card~\citep{chan1998toward} with a certain level of confidence are examples of how companies doing businesses on the internet are making better decisions and maximizing their earnings.
 
-Capturing and storing large amounts of data is a commonplace for most companies these days. Having more data available is often a positive aspect in order to train models with a lower error rate. However, writing code to effectively process terabytes of data and provide near-real-time predictions supporting high throughput is not a trivial task. One is required to have knowledge in advanced areas of science, such as computing, statistics and math. High scale data processing frameworks~\citep{zaharia2010spark} fulfill their role by abstracting some of the complexities related to distributed computing and process orchestration. Libraries like MLLib~\citep{meng2015ml} and scikit-learn~\citep{pedregosa2011scikit} facilitate it by providing high level interfaces to common machine learning algorithms. Even so, building robust model-dependent applications is tricky and requires specialized knowledge. There is an open space for a platform that empowers the data scientist with the tools and abstractions needed to create scalable, high available, interoperable and maintainable predictive software. 
+Capturing and storing large amounts of data is a commonplace for most companies these days. Having more data available is often a positive aspect in order to train models with a lower error rate. However, writing code to effectively process terabytes of data and provide near-real-time predictions supporting high throughput is not a trivial task. One is required to have knowledge in advanced areas of science, such as computing, statistics and math. High scale data processing frameworks~\citep{zaharia2010spark} fulfill their role by abstracting some of the complexities related to distributed computing and process orchestration. Libraries like MLLib~\citep{meng2015ml} and scikit-learn~\citep{pedregosa2011scikit} facilitate it by providing high level interfaces to common machine learning algorithms. Even so, building robust model-dependent applications is tricky and requires specialized knowledge. There is an open space for a platform that empowers the data scientist with the tools and abstractions needed to create scalable, highly available, interoperable and maintainable predictive software. 
 
-In this paper we present Marvin \citep{marvingit}, an open source platform that aims to help data scientists on several tasks during the life cycle of an artificial intelligence project. In section 2 we describe the platform main features, section 3 contains implementation details, section 4 has a sample application and finally in section 5 we summarize our findings.
+In this paper we present Marvin (\textit{https://github.com/marvin-ai}), an open source platform that aims to help data scientists with several tasks during the life cycle of an artificial intelligence project. In section 2 we describe the platform's main features, section 3 contains implementation details, section 4 has a sample application and finally in section 5 we summarize our findings.
 
 \section{Marvin Overview}
 
@@ -97,7 +97,7 @@ To achieve that, Marvin provide several features, those include:
     \item Predictor Server - When finishing the training pipeline Marvin persists the serialized model in a persistent memory storage. This model is loaded afterwards by the predictor server and is accessible via REST HTTP calls. Users and applications can then make predictions taking advantage of the model.
 \end{enumerate}
 
-Marvin is composed by three main components, see Figure \ref{fig_components}. The toolbox is both a command line interface and a library that contains a set of utilities to help data scientists during the phase of exploration and development. Using the toolbox the user will build his application, which in the context of Marvin is called an engine. The engine must be built following a design pattern proposed by Marvin, the toolbox will generate a scaffold with the classes corresponding to this pattern. Each phase in the pattern will produce an artifact, that can be persisted and reloaded. Lastly, the engine-executor is the component responsible by orchestrating the execution of engines and also by deploying servers to allow external interaction with it.
+Marvin is composed by three main components, see Figure \ref{fig_components}. The toolbox is both a command line interface and a library that contains a set of utilities to help data scientists during the phase of exploration and development. Using the toolbox the user will build his application, which in the context of Marvin is called an engine. The engine must be built following a design pattern proposed by Marvin, the toolbox will generate a scaffold with the classes corresponding to this pattern. Each phase in the pattern will produce an artifact, that can be persisted and reloaded. Lastly, the engine-executor is the component responsible of orchestrating the execution of engines and also by deploying servers to allow external interaction with it.
 
 \begin{figure}[h]
 \centering
@@ -142,7 +142,7 @@ One of Marvin's main objective is to optimize execution of it's users' applicati
     \item online - e.g. predict, feedback
 \end{itemize}
 
-Batch actions are executed asynchronously and the result of it's execution will be an artifact. The generated artifacts can be persisted and re-used in the same application or with other applications instances. A practical use of this functionality would be to share the initial dataset artifact between different models, avoiding unnecessary duplicated computation. These characteristics help to perform effective long running and data-intensive jobs. 
+Batch actions are executed asynchronously and the result of it's execution will be an artifact, i.e. binary or plain text data. The generated artifacts can be persisted and re-used in the same application or with other applications instances. A practical use of this functionality can be to share the initial dataset artifact between different models, avoiding unnecessary duplicated computation. These characteristics help to perform effective long running and data-intensive jobs. 
 
 In order to achieve parallelism in different levels, Marvin applications run on top of common data processing frameworks, see Figure \ref{fig_spark}. The Marvin context is a component that frees the data scientist of setting up and optimizing the framework, it wraps some methods from the original framework library but also expose the main features of it.
 \begin{figure}[h]
@@ -157,7 +157,7 @@ On the other hand, online actions are executed synchronously and they may genera
 
 All application's execution are orchestrated by the engine-executor component. This is a configurable component that can be deployed in different formats, depending on the environment complexity. One may want to deploy an engine-executor instance for each pipeline phase (data acquisition, data preparation, model training, etc.), it would avoid a single point of failure and allow independent scalability for each phase. However, projects on a smaller scale may prefer to deploy all the phases and the predictor server in the same instance. To achieve safe and effective concurrent execution, the underlying of engine-executor is implemented according to the Actor model~\citep{hewitt1973session}.
 
-As we understand that there is no mother programming language for artificial intelligence applications, we built Marvin under the assumption that it should be language agnostic. It means that users are free to implement their applications using their preferred language, provided that its support is implemented. Figure \ref{fig_rpc} shows how Marvin is using the RPC~\citep{srinivasan1995rpc} protocol to execute code written in different languages.
+As we understand that there is no mother programming language for artificial intelligence applications, we built Marvin under the assumption that it should be language agnostic. It means that users are free to implement their applications using their preferred language, provided that its support is implemented. The first Marvin's version supports Python language. Figure \ref{fig_rpc} shows how Marvin is using the RPC~\citep{srinivasan1995rpc} protocol to execute code written in different languages.
 
 \begin{figure}[h]
 \centering
@@ -169,7 +169,7 @@ As we understand that there is no mother programming language for artificial int
 
 \section{Sample Engine}
 
-Marvin applications are also labeled as engines. An engine is composed by the application's source code, a file containing parameters for the application and the metadata file. We encourage users to implement decoupled engines that are easy to maintain and less bug prone. To induce that we propose the DASFE design pattern (Figure \ref{fig_dase}). This pattern is strongly based on the DASE pattern~\citep{chan2013predictionio}, however we added the feedback phase on it. This evolution intends to enable the engine to receive input from external applications or users, this kind of feature allows the model to be modified online or add hooks to start a new training pipeline.
+Marvin applications are also labeled as engines. An engine is composed by the application's source code, a file containing parameters for the application and the metadata file. We encourage users to implement decoupled engines that are easy to maintain and less bug prone. To induce that we propose the DASFE design pattern (Figure \ref{fig_dase}). This pattern is strongly based on the DASE pattern~\citep{chan2013predictionio}, however we added the feedback phase to it. This evolution intends to enable the engine to receive input from external applications or users, this kind of feature allows the model to be modified online or add hooks to start a new training pipeline.
 
 \begin{figure}[h]
 \centering
@@ -206,7 +206,7 @@ Finally the Predictor class contains the logic that will be called for every val
 
 Deploying this code on Marvin's engine-executor will provide control over the training pipeline execution, dataframes and model serialization and versioning, metrics evaluation, model serving and feedback input interface.
 
-\section{Performance Evaluation}
+\section{Performance Assessment}
 
 Aiming to evaluate the parallelism ability of the predictor server, we conducted a set of experiments predicting classes of iris in a Support Vector Machine (SVM)~\citep{hearst1998support} model trained using the classical Fisher's iris dataset~\citep{fisher1936use} for classification. The overall objective of this experiment was to ensure that the predictor server is able to take advantage of multi-core architectures while not impacting significantly negative on the response time of predictions or the consistency of the results due to many queued threads or timeout exhaustion.
 
@@ -228,12 +228,12 @@ The test setup consisted of two dedicated machines, one simulating the users and
 \label{fig_load_2}
 \end{figure}
 
-The experiment strategy was to keep the amount of resources available and increase the throughput of concurrent requests being sent to the server until a significantly increase on the response time or failed requests was observed. The requests from client to server were made through the REST HTTP protocol and the machines were located in the same physical data center. As it is possible to see in Figures \ref{fig_load} and \ref{fig_load_2}, we achieved 500 predictions per second maintaining a stable response time and none failed requests, at round 6 the mean response time increased significantly and the error rate has raised. The behavior of test round 6 indicates that we crossed the edge of efficient parallelism of Marvin's engine-executor predictions. Although we consider this a good number, we encourage administrators to deploy several instances of engine-executors behind a load-balancer when more than 500 predictions per second must be served.
+The experiment strategy was to keep the amount of resources available and increase the throughput of concurrent requests being sent to the server until a significantly increase on the response time or failed requests was observed. The requests from client to server were made through the REST HTTP protocol and the machines were located in the same physical data center. As it is possible to see in Figures \ref{fig_load} and \ref{fig_load_2}, we achieved 500 predictions per second maintaining a stable response time and none failed requests, at round 6 the mean response time increased significantly and the error rate has raised. The behavior of test round 6 indicates that we crossed the edge of efficient parallelism of Marvin's engine-executor predictions. Although we consider this a good number, we encourage administrators to deploy several instances of engine-executors behind a load-balancer when more than 500 predictions per second must be served. The current performance result is proved to be enough for large scale e-commerce platforms, like B2W Digital.
 
 \section{Conclusion}
-Implement artificial intelligence applications with enterprise software characteristics is a hard task. Several contributions were made in libraries offering algorithms implementation and frameworks for distributed computing of data-intensive applications. Marvin add tools and integrate with libraries and data frameworks to support the exploration and model development of such kind of applications, it introduces a framework that speeds up the task of turning model prototypes into industry-grade software. Lastly Marvin's engine-executor is a model server that takes care of pipeline execution, artifacts serialization and offers a standard interface to allow other applications to access the model, it takes into account non-functional requirements to allow safe concurrency and effective parallelism on shared and distributed memory. The experiments demonstrated that engine-executor is able to serve 500 predictions per second while maintaining stable response time and 0 failed requests.
+Implementing artificial intelligence applications with enterprise software characteristics is a hard task. Several contributions were made in libraries offering algorithms implementation and frameworks for distributed computing of data-intensive applications. Marvin adds tools and integrate with libraries and data frameworks to support the exploration and model development of such kind of applications, it introduces a framework that speeds up the task of turning model prototypes into industry-grade software. Lastly Marvin's engine-executor is a model server that takes care of pipeline execution, artifacts serialization and offers a standard interface to allow other applications to access the model, it takes into account non-functional requirements to allow safe concurrency and effective parallelism on shared and distributed memory. The experiments demonstrated that engine-executor is able to serve 500 predictions per second while maintaining stable response time and 0 failed requests.
 
-Marvin engines are helping companies like B2W Digital to be data-driven organizations, serving algorithms that can automate decisions such as optimizing its products prices to increase revenue, detecting frauds at the earliest stage and customizing sorting of many offers of the same product to customer clusters. The platform meshes the necessary components to empower data scientists pursuing to deliver production level applications that can support high throughput and process large datasets.
+Marvin engines are helping companies to be data-driven organizations, serving algorithms that can automate decisions such as optimizing its products prices to increase revenue, detecting fraud at the earliest stage and customizing sorting of many offers of the same product to customer clusters. The platform meshes the necessary components to empower data scientists pursuing to deliver production level applications that can support high throughput and process large datasets.
 
 
 \newpage
